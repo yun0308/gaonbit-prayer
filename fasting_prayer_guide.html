@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>가온빛교회 금식기도 가이드</title>
+
+<!-- ── 카카오톡/SNS 링크 미리보기용 Open Graph 태그 ── -->
+<!-- ⚠️ 실제 호스팅 후, og:url 과 og:image 를 본인 주소로 꼭 교체하세요 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="가온빛교회 금식기도 가이드">
+<meta property="og:description" content="200가정 · 500성도를 향한 기도 — 함께 금식하며 마음을 모읍니다.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1200&h=630&q=80&auto=format&fit=crop">
+<meta property="og:url" content="https://example.com/fasting_prayer_guide.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="가온빛교회 금식기도 가이드">
+<meta name="twitter:description" content="200가정 · 500성도를 향한 기도 — 함께 금식하며 마음을 모읍니다.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1200&h=630&q=80&auto=format&fit=crop">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold:   #C9A84C;
+  --gold2:  #E8D5A3;
+  --cream:  #F7F2E8;
+  --dark:   #0D0C0A;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--dark);
+  font-family: 'Noto Serif KR', serif;
+  user-select: none;
+}
+
+.scene {
+  position: fixed; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.3s cubic-bezier(.4,0,.2,1);
+}
+.scene.active { opacity: 1; pointer-events: auto; }
+
+.bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.06);
+  transition: transform 8s ease;
+  filter: brightness(0.4) saturate(0.7);
+}
+.scene.active .bg { transform: scale(1); }
+
+.overlay {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to top,  rgba(13,12,10,0.92) 0%, transparent 48%),
+    linear-gradient(to bottom, rgba(13,12,10,0.65) 0%, transparent 38%);
+}
+
+.content {
+  position: relative; z-index: 10;
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+  padding: 0 28px;
+  max-width: 840px;
+  width: 100%;
+}
+
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+.tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(.8rem, 1.8vw, 1rem);
+  letter-spacing: .3em;
+  color: var(--gold);
+  margin-bottom: 18px;
+  opacity: 0; transform: translateY(14px);
+  animation: fadeUp .8s .3s forwards;
+}
+.headline {
+  font-size: clamp(2rem, 6.5vw, 4.3rem);
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: .04em;
+  line-height: 1.25;
+  opacity: 0; transform: translateY(18px);
+  animation: fadeUp .9s .4s forwards;
+}
+.headline-nowrap {
+  font-size: clamp(1.7rem, 6.4vw, 4.1rem);
+  white-space: nowrap;
+  text-align: center;
+  margin-top: 22px;
+  margin-bottom: 30px;
+}
+.rule {
+  width: 56px; height: 1px;
+  background: var(--gold);
+  margin: 14px auto 18px;
+  opacity: 0;
+  animation: fadeUp .7s .45s forwards;
+}
+.sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(.95rem, 2.4vw, 1.25rem);
+  font-weight: 300;
+  color: rgba(247,242,232,.6);
+  letter-spacing: .1em;
+  line-height: 1.9;
+  opacity: 0; transform: translateY(12px);
+  animation: fadeUp .8s .85s forwards;
+}
+
+/* ── 인트로 메인 타이틀 (재디자인) ── */
+.mobile-break { display: none; }
+
+.eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(.72rem, 1.5vw, .85rem);
+  letter-spacing: .35em;
+  color: var(--gold);
+  text-transform: uppercase;
+  opacity: 0; transform: translateY(10px);
+  animation: fadeUp .7s .2s forwards;
+}
+.body-text {
+  font-size: clamp(1.05rem, 2.6vw, 1.5rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.95;
+  letter-spacing: .02em;
+  text-shadow: 0 4px 30px rgba(0,0,0,.7);
+  opacity: 0; transform: translateY(16px);
+  animation: fadeUp .9s .45s forwards;
+  margin-top: 18px;
+}
+.body-text b { color: var(--gold2); font-weight: 700; }
+
+.num-badge {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(.85rem, 2vw, 1.05rem);
+  letter-spacing: .15em;
+  color: var(--dark);
+  background: var(--gold);
+  padding: 7px 22px;
+  border-radius: 30px;
+  margin-bottom: 18px;
+  opacity: 0; transform: translateY(10px);
+  animation: fadeUp .7s .15s forwards;
+}
+
+/* 기도제목 - 큰 넘버 워터마크 */
+.prayer-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(5rem, 16vw, 10rem);
+  line-height: .85;
+  color: rgba(201,168,76,.07);
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  pointer-events: none;
+  z-index: 5;
+  white-space: nowrap;
+}
+.prayer-text {
+  font-size: clamp(1.4rem, 4vw, 2.4rem);
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1.55;
+  text-shadow: 0 4px 40px rgba(0,0,0,.8);
+  opacity: 0; transform: translateY(18px);
+  animation: fadeUp .9s .45s forwards;
+  position: relative; z-index: 10;
+}
+.accent-line {
+  display: block;
+  width: 36px; height: 2px;
+  background: var(--gold);
+  margin: 22px auto 0;
+  opacity: 0;
+  animation: fadeUp .6s .65s forwards;
+}
+
+/* 말씀 슬라이드 */
+.verse-block {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.05rem, 2.6vw, 1.5rem);
+  color: rgba(247,242,232,.92);
+  line-height: 2.1;
+  letter-spacing: .02em;
+  opacity: 0; transform: translateY(16px);
+  animation: fadeUp 1s .45s forwards;
+}
+.verse-ref {
+  font-style: normal;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 600;
+  color: var(--gold);
+  font-size: .85em;
+  letter-spacing: .15em;
+  display: block;
+  margin-top: 22px;
+  opacity: 0;
+  animation: fadeUp .8s .9s forwards;
+}
+
+/* 방법 카드 */
+.method-grid {
+  display: flex;
+  gap: 22px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.method-card {
+  background: rgba(247,242,232,.06);
+  border: 1px solid rgba(201,168,76,.3);
+  border-radius: 4px;
+  padding: 22px 24px;
+  max-width: 240px;
+  width: 100%;
+  opacity: 0; transform: translateY(16px);
+  animation: fadeUp .7s forwards;
+}
+.method-card:nth-child(1) { animation-delay: .5s; }
+.method-card:nth-child(2) { animation-delay: .7s; }
+.method-card .mnum {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+.method-card .mtext {
+  font-size: .95rem;
+  color: var(--cream);
+  line-height: 1.6;
+}
+
+/* 아멘/아웃트로 */
+.amen-word {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.6rem, 9vw, 6rem);
+  font-weight: 300;
+  letter-spacing: .3em;
+  color: var(--gold2);
+  text-shadow: 0 0 80px rgba(201,168,76,.45);
+  opacity: 0; transform: translateY(16px);
+  animation: fadeUp 1s .3s forwards;
+}
+
+/* 하단 UI */
+.ui {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 40px 26px;
+  display: flex; align-items: center; gap: 20px;
+}
+.progress-track { flex: 1; height: 1px; background: rgba(255,255,255,.12); position: relative; overflow: hidden; }
+.progress-fill { position: absolute; left:0; top:0; bottom:0; background: var(--gold); width: 0%; }
+.dots-row { display: flex; gap: 6px; }
+.dot { width: 6px; height: 6px; border-radius: 50%; border: 1px solid rgba(201,168,76,.4); background: transparent; transition: all .4s; }
+.dot.active { background: var(--gold); border-color: var(--gold); transform: scale(1.35); }
+
+.church-tag {
+  position: fixed; top: 26px; left: 34px;
+  z-index: 100;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: .82rem;
+  letter-spacing: .2em;
+  color: rgba(201,168,76,.6);
+}
+.hint {
+  position: fixed; bottom: 58px; right: 36px;
+  z-index: 100;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .78rem;
+  letter-spacing: .18em;
+  color: rgba(255,255,255,.2);
+  display: flex; align-items: center; gap: 8px;
+  transition: opacity .5s;
+}
+
+/* ── 갤럭시 등 일반 모바일 (세로 모드, ~480px 이하) ── */
+@media (max-width: 480px) {
+  .content { padding: 0 22px; }
+
+  .headline { font-size: clamp(1.9rem, 8vw, 2.6rem); line-height: 1.3; }
+  .headline-nowrap { font-size: clamp(1.2rem, 6.6vw, 1.8rem); }
+  .mobile-break { display: inline; }
+  .sub { font-size: clamp(.9rem, 3.6vw, 1.05rem); line-height: 1.8; }
+  .body-text { font-size: clamp(1rem, 4vw, 1.2rem); line-height: 1.85; }
+  .prayer-text { font-size: clamp(1.4rem, 6.5vw, 1.9rem); }
+  .verse-block { font-size: clamp(1rem, 4vw, 1.2rem); line-height: 1.9; }
+  .verse-ref { font-size: .8rem; }
+  .amen-word { font-size: clamp(2.2rem, 13vw, 3.2rem); letter-spacing: .22em; }
+
+  .eyebrow { font-size: .68rem; letter-spacing: .25em; }
+  .tag { font-size: .75rem; letter-spacing: .22em; }
+  .num-badge { font-size: .78rem; padding: 6px 16px; }
+
+  .prayer-num { font-size: clamp(4.5rem, 28vw, 7rem); }
+
+  .method-grid { gap: 14px; margin-top: 22px; }
+  .method-card { max-width: 47%; padding: 16px 14px; }
+  .method-card .mnum { font-size: 1.3rem; }
+  .method-card .mtext { font-size: .82rem; line-height: 1.55; }
+
+  .summary-list { gap: 18px; margin-top: 22px; }
+  .summary-item { gap: 12px; padding-bottom: 16px; }
+  .summary-num { width: 38px; font-size: 1.4rem; }
+  .summary-text { font-size: .95rem; line-height: 1.5; }
+
+  .church-tag { font-size: .68rem; top: 18px; left: 20px; }
+  .hint { font-size: .68rem; bottom: 50px; right: 22px; }
+  .ui { padding: 0 22px 20px; }
+}
+
+/* ── 초소형 화면 (360px 이하, 구형 갤럭시 등) ── */
+@media (max-width: 360px) {
+  .content { padding: 0 16px; }
+  .method-grid { flex-direction: column; align-items: stretch; }
+  .method-card { max-width: 100%; }
+  .summary-num { width: 32px; }
+  .headline-nowrap { font-size: clamp(1.05rem, 6.2vw, 1.55rem); }
+}
+
+.heart { color: var(--gold); }
+
+/* 기도제목 총정리 */
+.summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  margin-top: 30px;
+  width: 100%;
+}
+.summary-item {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  text-align: left;
+  opacity: 0; transform: translateY(16px);
+  animation: fadeUp .7s forwards;
+  border-bottom: 1px solid rgba(201,168,76,.18);
+  padding-bottom: 20px;
+  width: 100%;
+}
+.summary-item:last-child { border-bottom: none; }
+.summary-item:nth-child(1) { animation-delay: .4s; }
+.summary-item:nth-child(2) { animation-delay: .65s; }
+.summary-item:nth-child(3) { animation-delay: .9s; }
+.summary-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+  color: var(--gold);
+  flex-shrink: 0;
+  width: 52px;
+}
+.summary-text {
+  font-size: clamp(1rem, 3vw, 1.8rem);
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1.5;
+  text-shadow: 0 4px 30px rgba(0,0,0,.7);
+  word-break: keep-all;
+}
+</style>
+</head>
+<body>
+
+<div class="church-tag">가온빛교회 · 금식기도</div>
+<div class="hint" id="hint"><span>→</span> 화면을 클릭해 넘기세요</div>
+
+<!-- 0. 인트로 -->
+<section class="scene active" id="s0">
+  <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1600&q=80&auto=format&fit=crop')"></div>
+  <div class="overlay"></div>
+  <div class="content">
+    <p class="eyebrow">금식기도 안내</p>
+    <div class="rule" style="margin-top:14px"></div>
+    <h1 class="headline headline-nowrap">200가정 · 500성도를 향한 기도</h1>
+    <p class="sub">가온빛교회 · 마음을 모아 하나님 앞에<br>금식하며 기도하기를 원합니다</p>
+  </div>
+</section>
+
+<!-- 1. 모임 소개 -->
+<section class="scene" id="s1">
+  <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1600&q=80&auto=format&fit=crop')"></div>
+  <div class="overlay"></div>
+  <div class="content">
+    <p class="eyebrow">모임 소개</p>
+    <div class="rule" style="margin-top:14px"></div>
+    <p class="body-text">
+      <b>교회의 재정</b>과<br>
+      <b>200가정 500성도</b>의 목적을 위해<br>
+      마음을 모아 하나님 앞에<br>
+      <b>금식하며 기도</b>하기를 원합니다.
+    </p>
+  </div>
+</section>
+
+<!-- 2. 방법 -->
+<section class="scene" id="s2">
+  <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=1600&q=80&auto=format&fit=crop')"></div>
+  <div class="overlay"></div>
+  <div class="content">
+    <p class="eyebrow">금식기도 방법</p>
+    <div class="rule" style="margin-top:14px"></div>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="mnum">01</div>
+        <div class="mtext">일주일에 한 끼나<br>두 끼 이상을 금식</div>
+      </div>
+      <div class="method-card">
+        <div class="mnum">02</div>
+        <div class="mtext">그 시간에 있는 자리에서<br>함께 기도하기</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 호세아 말씀 -->
+<section class="scene" id="s3">
+  <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1473177104440-ffee2f376098?w=1600&q=80&auto=format&fit=crop')"></div>
+  <div class="overlay"></div>
+  <div class="content">
+    <p class="eyebrow">말씀</p>
+    <div class="rule" style="margin-top:14px"></div>
+    <p class="verse-block">
+      오라 우리가<br>
+      여호와께로 돌아가자<br>
+      여호와께서 우리를 찢으셨으나<br>
+      도로 낫게 하실 것이요<br>
+      우리를 치셨으나<br>
+      싸매어 주실 것임이라<br><br>
+      여호와께서 이틀 후에<br>
+      우리를 살리시며<br>
+      셋째 날에 우리를 일으키시리니<br>
+      우리가 그의 앞에서 살리라
+      <span class="verse-ref">호세아 6장 1절 ~ 2절</span>
+    </p>
+  </div>
+</section>
+
+<!-- 4. 호세아 말씀 2 -->
+<section class="scene" id="s4">
+  <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1518621736915-f3b3c16c4368?w=1600&q=80&auto=format&fit=crop')"></div>
+  <div class="overlay"></div>
+  <div class="content">
+    <p class="eyebrow">말씀</p>
+    <div class="rule" style="margin-top:14px"></div>
+    <p class="verse-block">
+      그러므로<br>
+      우리가 여호와를 알자<br>
+      힘써 여호와를 알자<br><br>
+      그의 나타나심은<br>
+      새벽빛같이 어김없나니<br>
+      비와 같이,<br>
+      땅을 적시는 늦은 비와 같이<br>
+      우리에게 임하시리라
+      <span class="verse-ref">호세아 6장 3절</span>
+    </p>
+  </div>
+</section>
+
+<!-- 5. 기도제목 1 -->
+<section class="scene" id="s5">
+  <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1609234656388-0ff363383899?w=1600&q=80&auto=format&fit=crop')"></div>
+  <div class="overlay"></div>
+  <div class="prayer-num">01</div>
+  <div class="content">
+    <div class="num-badge">기도제목 1</div>
+    <p class="prayer-text">교회의 빠른 재정 회복과<br>풍성함을 위해</p>
+    <span class="accent-line"></span>
+  </div>
+</section>
+
+<!-- 6. 기도제목 2 -->
+<section class="scene" id="s6">
+  <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1517021897933-28edd37d8b25?w=1600&q=80&auto=format&fit=crop')"></div>
+  <div class="overlay"></div>
+  <div class="prayer-num">02</div>
+  <div class="content">
+    <div class="num-badge">기도제목 2</div>
+    <p class="prayer-text">성도 간의<br>하나됨을 위해</p>
+    <span class="accent-line"></span>
+  </div>
+</section>
+
+<!-- 7. 기도제목 3 -->
+<section class="scene" id="s7">
+  <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1476234251651-f353703a034d?w=1600&q=80&auto=format&fit=crop')"></div>
+  <div class="overlay"></div>
+  <div class="prayer-num">03</div>
+  <div class="content">
+    <div class="num-badge">기도제목 3</div>
+    <p class="prayer-text">가온빛교회로 작정된<br>성도들이 몰려오도록</p>
+    <span class="accent-line"></span>
+  </div>
+</section>
+
+<!-- 8. 기도제목 총정리 -->
+<section class="scene" id="s8">
+  <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=1600&q=80&auto=format&fit=crop')"></div>
+  <div class="overlay"></div>
+  <div class="content" style="max-width:920px">
+    <p class="eyebrow">함께 드리는 기도제목</p>
+    <div class="rule" style="margin-top:14px"></div>
+    <div class="summary-list">
+      <div class="summary-item">
+        <span class="summary-num">01</span>
+        <span class="summary-text">교회의 빠른 재정 회복과 풍성함을 위해</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-num">02</span>
+        <span class="summary-text">성도 간의 하나됨을 위해</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-num">03</span>
+        <span class="summary-text">가온빛교회로 작정된 성도들이 몰려오도록</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. 아웃트로 -->
+<section class="scene" id="s9">
+  <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1600&q=80&auto=format&fit=crop')"></div>
+  <div class="overlay"></div>
+  <div class="content">
+    <p class="amen-word">AMEN</p>
+    <div class="rule"></div>
+    <p class="sub">샬롬 <span class="heart">♡</span><br>함께 마음을 모아 기도합니다</p>
+  </div>
+</section>
+
+<div class="ui">
+  <div class="progress-track"><div class="progress-fill" id="fill"></div></div>
+  <div class="dots-row" id="dots"></div>
+</div>
+
+<script>
+const scenes = document.querySelectorAll('.scene');
+const fill   = document.getElementById('fill');
+const dotsEl = document.getElementById('dots');
+const hint   = document.getElementById('hint');
+
+const DEFAULT_DURATION = 6000;
+const SUMMARY_SLIDE_ID = 's8';
+const SUMMARY_DURATION = 12000;
+let current = 0, raf, startTime, elapsed = 0;
+
+scenes.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  dotsEl.appendChild(d);
+});
+
+function reAnimate(scene) {
+  const animated = scene.querySelectorAll('.tag,.headline,.rule,.sub,.eyebrow,.prayer-text,.accent-line,.amen-word,.verse-block,.verse-ref,.body-text,.num-badge,.method-card,.summary-item');
+  animated.forEach(el => {
+    el.style.animation = 'none';
+    void el.offsetWidth;
+    el.style.animation = '';
+  });
+}
+
+function show(n) {
+  scenes.forEach((s, i) => {
+    const on = i === n;
+    s.classList.toggle('active', on);
+    if (on) reAnimate(s);
+  });
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === n));
+}
+
+function getDuration() {
+  return scenes[current].id === SUMMARY_SLIDE_ID ? SUMMARY_DURATION : DEFAULT_DURATION;
+}
+
+function tick(now) {
+  elapsed = now - startTime;
+  const dur = getDuration();
+  fill.style.width = Math.min(elapsed / dur * 100, 100) + '%';
+  if (elapsed >= dur) { next(); return; }
+  raf = requestAnimationFrame(tick);
+}
+
+function startTimer() { startTime = performance.now() - elapsed; raf = requestAnimationFrame(tick); }
+
+function next() {
+  cancelAnimationFrame(raf);
+  elapsed = 0;
+  current = (current + 1) % scenes.length;
+  show(current);
+  startTimer();
+}
+
+document.body.addEventListener('click', () => { hint.style.opacity = '0'; next(); });
+setTimeout(() => hint.style.opacity = '0', 4000);
+
+show(0);
+startTimer();
+</script>
+</body>
+</html>
