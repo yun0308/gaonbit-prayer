@@ -291,6 +291,20 @@ html, body {
   text-shadow: 0 4px 30px rgba(0,0,0,.7);
 }
 
+.caution-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(.95rem, 2.2vw, 1.2rem);
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(247,242,232,.65);
+  line-height: 1.7;
+  letter-spacing: .02em;
+  margin-top: 32px;
+  max-width: 640px;
+  opacity: 0; transform: translateY(14px);
+  animation: fadeUp .8s 1.1s forwards;
+}
+
 .heart { color: var(--gold); }
 
 /* 하단 UI */
@@ -354,6 +368,7 @@ html, body {
   .summary-item { gap: 12px; padding-bottom: 16px; }
   .summary-num { width: 38px; font-size: 1.4rem; }
   .summary-text { font-size: .95rem; line-height: 1.5; }
+  .caution-text { font-size: .85rem; margin-top: 22px; line-height: 1.6; }
 
   .church-tag { font-size: .68rem; top: 18px; left: 20px; }
   .hint { font-size: .68rem; bottom: 50px; right: 22px; }
@@ -419,6 +434,31 @@ html, body {
         <div class="mtext">그 시간에 있는 자리에서<br>함께 기도하기</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- 2b. 금식 시간 -->
+<section class="scene" id="s2b">
+  <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=1600&q=80&auto=format&fit=crop')"></div>
+  <div class="overlay"></div>
+  <div class="content" style="max-width:920px">
+    <p class="eyebrow">금식 시간</p>
+    <div class="rule" style="margin-top:14px"></div>
+    <div class="summary-list">
+      <div class="summary-item">
+        <span class="summary-num">01</span>
+        <span class="summary-text">아침 금식 — 기상 후부터 12시까지</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-num">02</span>
+        <span class="summary-text">점심 금식 — 12시부터 6시까지</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-num">03</span>
+        <span class="summary-text">저녁 금식 — 6시부터 다음날 기상 시까지</span>
+      </div>
+    </div>
+    <p class="caution-text">금식 기간 중 식사와 함께 과자 · 사탕 · 커피도 금하며, 물만 가능합니다.</p>
   </div>
 </section>
 
@@ -506,7 +546,7 @@ html, body {
   <div class="content">
     <p class="amen-word">AMEN</p>
     <div class="rule"></div>
-    <p class="sub">샬롬 <span class="heart">♡</span><br>함께 마음을 모아 기도합니다</p>
+    <p class="sub">샬롬 <span class="heart">♡</span><br>오늘도 기도하는 여러분들을<br>사랑하고 축복합니다.</p>
   </div>
 </section>
 
@@ -534,7 +574,7 @@ scenes.forEach((_, i) => {
 });
 
 function reAnimate(scene) {
-  const animated = scene.querySelectorAll('.tag,.headline,.rule,.sub,.eyebrow,.prayer-text,.accent-line,.amen-word,.verse-block,.verse-ref,.body-text,.num-badge,.method-card,.summary-item');
+  const animated = scene.querySelectorAll('.tag,.headline,.rule,.sub,.eyebrow,.prayer-text,.accent-line,.amen-word,.verse-block,.verse-ref,.body-text,.num-badge,.method-card,.summary-item,.caution-text');
   animated.forEach(el => {
     el.style.animation = 'none';
     void el.offsetWidth;
